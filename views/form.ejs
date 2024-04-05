@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com/ https://unpkg.com/aos@2.3.1/dist/aos.js https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/ 'unsafe-inline'">
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
+    <title>Photizo | HGBC Influencers</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles.css" type="text/css">
+
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <!---- Boxicon -->
+</head>
+
+<body class="">
+   <style>
+     .my-container{
+        width: 90%;
+        max-width: 1000px;
+        display: flex;
+        justify-content: center;
+        margin-inline: auto;
+     }
+     .alert-success{
+        color: #155723; /* Text color */
+        background-color: #dff0d8; /* Background color */
+        border-color: #c3e6cb; /* Border color */
+        border-radius: 0.25rem; /* Border radius */
+        padding: 0.75rem 1.25rem; /* Padding */
+        margin-bottom: 1rem; /* Margin bottom */
+        margin-top: 1rem; /* Margin bottom */
+        border: 1px solid transparent; /* Initial border */
+        text-align: center;
+     }
+     .alert-error{
+        color: #f8d7da; /* Text color */
+        background-color: #dc3545; /* Background color */
+        border-color: #c8233c; /* Border color */
+        border-radius: 0.25rem; /* Border radius */
+        padding: 0.75rem 1.25rem; /* Padding */
+        margin-bottom: 1rem; /* Margin bottom */
+        margin-top: 1rem; /* Margin bottom */
+        border: 1px solid transparent; /* Initial border */
+        text-align: center;
+     }
+   </style>
+    <!-- Form -->
+    <section id="form" class="relative px-4 md:px-16 lg:px-32">
+
+        <!-- animated Background -->
+    <div class="fixed inset-0 z-0 ">
+        <div
+            class="absolute md:flex hidden top-20 left-20 w-[300px] md:w-[200] h-[300px] bg-primary-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+        </div>
+        <div
+            class="md:absolute top-36 right-36 w-[300px] md:w-[200] h-[300px] bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute  md:top-96 md:right-[700px] md:w-[200] top-36 right-36  w-[300px] h-[300px] bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
+        </div>
+        <div
+            class="md:absolute md:flex hidden bottom-20 left-20 w-[300px] md:w-[200] h-[300px]  bg-yellow-300  rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute   md:bottom-36 bottom-48 right-36 w-[300px] md:w-[200] h-[300px] bg-primary-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
+        </div>
+    </div>
+
+
+        <div class="max-w-lg mx-auto relative z-10 h-[calc(100% - 40px)] overflow-y-auto">
+            <!-- flash error and success -->
+            <div class="my-container top-layer">
+                <% if (error && error.length > 0) { %>
+                   <div id="error-alert" class="alert alert-error" role="alert">
+                      <%= error %>
+                   </div>
+                   <script>
+                      const errorAlert = document.getElementById('error-alert');
+             
+                      // Ensure errorAlert exists before setting timeout
+                      if (errorAlert) {
+                         setTimeout(() => {
+                            errorAlert.style.display = 'none';
+                         }, 5000); // 30 seconds in milliseconds
+                      }
+                   </script>
+                <% } else if (success && success.length > 0) { %>
+                   <div id="success-alert" class="alert alert-success" role="alert">
+                      <%= success %>
+                   </div>
+                   <script>
+                      const successAlert = document.getElementById('success-alert');
+             
+                      // Ensure successAlert exists before setting timeout
+                      if (successAlert) {
+                         setTimeout(() => {
+                            successAlert.style.display = 'none';
+                         }, 5000); // 30 seconds in milliseconds
+                      }
+                   </script>
+                <% } %>
+             </div>
+             
+            <form class="border-2 border-gray-900/10 my-10 p-6 rounded-md" method="post" action="/photizo/register" enctype="multipart/form-data">
+                <div class="space-y-12">
+
+                    <div class="border-b border-gray-900/10 pb-12">
+                        <h2 class="font-semibold leading-7 text-primary-100 text-2xl text-center">PHOTIZO 2024</h2>
+                        <p class="mt-1 text-sm leading-6 text-gray-600"><span class="font-bold">NOTE: </span>All your
+                            personal information are safe with us. We collect this information for follow up.</p>
+
+                        <!-- Surname -->
+                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <div class="sm:col-span-6">
+                                <label for="last-name"
+                                    class="block text-sm font-medium leading-6 text-gray-900">Surname</label>
+                                <div class="mt-2">
+                                    <input type="text" name="surname" id="last-name" autocomplete="family-name"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                            <!-- First Name -->
+                            <div class="sm:col-span-3">
+                                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First
+                                    name</label>
+                                <div class="mt-2">
+                                    <input type="text" name="firstName" id="first-name" autocomplete="given-name"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6" required>
+                                </div>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="sm:col-span-3">
+                                <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last
+                                    name</label>
+                                <div class="mt-2">
+                                    <input type="text" name="lastName" id="last-name" autocomplete="family-name"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6" required>
+                                </div>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="sm:col-span-3">
+                                <label for="country"
+                                    class="block text-sm font-medium leading-6 text-gray-900">Gender</label>
+                                <div class="mt-2">
+                                    <select id="country" name="gender" autocomplete="country-name"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:max-w-xs sm:text-sm sm:leading-6">
+                                        <option></option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Age Range -->
+                            <div class="sm:col-span-3">
+                                <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Age
+                                    Range</label>
+                                <div class="mt-2">
+                                    <select id="country" name="age" autocomplete="country-name"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:max-w-xs sm:text-sm sm:leading-6">
+                                        <option></option>
+                                        <option>11-20</option>
+                                        <option> 21-30</option>
+                                        <option> 31-40</option>
+                                        <option> 41-50</option>
+                                        <option>51-60</option>
+                                        <option>61-70</option>
+                                        <option>71-80</option>
+                                        <option> 81-90</option>
+                                        <option> 91 and Above</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="sm:col-span-6">
+                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email
+                                    address</label>
+                                <div class="mt-2">
+                                    <input id="email" name="email" type="email" autocomplete="email" required
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="sm:col-span-6">
+                                <label for="phone-number"
+                                    class="block text-sm font-medium leading-6 text-gray-900">Phone Number</label>
+                                <div class="mt-2">
+                                    <input id="phone-number" name="mobileNumber" type="text" autocomplete="phone-number" required
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+
+                            <!-- City -->
+                            <div class="sm:col-span-3 sm:col-start-1">
+                                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">City</label>
+                                <div class="mt-2">
+                                    <input type="text" name="city" id="city" autocomplete="address-level2" required
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+
+                            <!-- State -->
+                            <div class="sm:col-span-3">
+                                <label for="region"
+                                    class="block text-sm font-medium leading-6 text-gray-900">State</label>
+                                <div class="mt-2">
+                                    <input type="text" name="state" id="region" autocomplete="address-level1" required
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6">
+                                </div>
+                            </div>
+
+                            <!-- Occupation -->
+                            <div class="col-span-full">
+                                <label for="ocupation"
+                                    class="block text-sm font-medium leading-6 text-gray-900">Are you a Student or Working class?</label>
+                                <div class="mt-2">
+                                    <select id="ocupation" name="occupation" autocomplete="ocupation"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:max-w-xs sm:text-sm sm:leading-6">
+                                        <option></option>
+                                        <option>Student</option>
+                                        <option>Working Class</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Mode of attendance -->
+                            <div class="sm:col-span-full">
+                                <label for="attendance" class="block text-sm font-medium leading-6 text-gray-900">How
+                                    are you Attending?</label>
+                                <div class="mt-2">
+                                    <select id="attendance" name="attendance" autocomplete="attendance" required
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:max-w-xs sm:text-sm sm:leading-6">
+                                        <option></option>
+                                        <option>On-site</option>
+                                        <option>Online</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!--  -->
+                            <div class="sm:col-span-full">
+                                <label for="attendance" class="block text-sm font-medium leading-6 text-gray-900">How
+                                    did you learn about the program?</label>
+                                <div class="mt-2">
+                                    <select id="attendance" name="learnings" autocomplete="attendance" required
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:max-w-xs sm:text-sm sm:leading-6">
+                                        <option></option>
+                                        <option> Church</option>
+                                        <option>Social Media</option>
+                                        <option>Flyer or Banner</option>
+                                        <option>Recommendation from a friend</option>
+                                    </select>
+                                    <div class="col-span-full mt-2">
+                                        <label for=""
+                                            class="block text-sm font-medium leading-6 text-gray-900">Other</label>
+                                        <div class="mt-2">
+                                            <input type="text" name="otherLearnings" id="" autocomplete=""
+                                                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class=" border-gray-900/10 pb-12">
+
+                            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+
+                                <!-- Expectations-->
+                                <div class="col-span-full">
+                                    <label for="about" class="block text-sm font-medium leading-6 text-gray-900">What
+                                        are your expectations from Photizo this year?</label>
+                                    <div class="mt-2">
+                                        <textarea id="about" name="expectations" rows="3" required
+                                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6"></textarea>
+                                    </div>
+                                    <p class="mt-3 text-sm leading-6 text-gray-600">Let us know how to serve you better.
+                                    </p>
+                                </div>
+
+                                <!-- Questions -->
+                                <div class="col-span-full">
+                                    <label for="about" class="block text-sm font-medium leading-6 text-gray-900">Do you
+                                        have any burning questions you need to be answered? </label>
+                                    <div class="mt-2">
+                                        <textarea id="about" name="questions" rows="3" required
+                                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-200 sm:text-sm sm:leading-6"></textarea>
+                                    </div>
+                                    <p class="mt-3 text-sm leading-6 text-gray-600">We are willing to offer answers to
+                                        all your questions.</p>
+                                </div>
+
+                                <div class="col-span-full">
+                                    <label for="cover-photo"
+                                        class="block text-sm font-medium leading-6 text-gray-900">Upload the receipt for
+                                        the registration payment</label>
+                                    <div class="mt-2 flex justify-center rounded-lg border px-6 py-10">
+                                        <div class="text-center">
+                                            <i class='bx bxs-image-add text-6xl text-primary-200'></i>
+                                          
+                                            <div class="mt-4 flex text-sm leading-6 text-gray-600">
+                                                <label for="file-upload"
+                                                    class="relative cursor-pointer rounded-md bg-white font-semibold text-primary-100 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-primary-200">
+                                                    <span>Upload a file</span>
+                                                    <input id="file-upload" name="file" type="file" required
+                                                        class="sr-only" accept="image/*">
+                                                </label>
+                                                <p class="pl-1">or drag and drop</p>
+                                            </div>
+                                            <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 20KB
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pb-5">
+                        <div class="mt-10 space-y-10">
+                            <fieldset>
+                                <div class="mt-6 space-y-6">
+                                    <div class="relative flex gap-x-3">
+                                        <div class="flex h-6 items-center">
+                                            <input id="comments" name="comments" type="checkbox"
+                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-primary-200">
+                                        </div>
+                                        <div class="text-sm leading-6">
+                                            <label for="comments" class="font-medium text-gray-900">I have carefully
+                                                input necessary data</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5 flex items-center justify-start gap-x-6">
+                    <button type="submit"
+                        class="rounded-md bg-primary-100  px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
+                </div>
+            </form>
+        </div>
+
+
+    </section>
+
+</body>
+
+</html>

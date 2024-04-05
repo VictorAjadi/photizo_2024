@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+
+/* Move @layer utilities directive before utility classes */
+@layer utilities {
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+/* Apply tailwind utilities */
+@tailwind utilities;
+
+/* Custom styles */
+.nav {
+  @apply mx-4 md:my-0 cursor-pointer p-2 mt-5 md:mt-0 hover:bg-white hover:text-primary-100 md:hover:text-white md:hover:bg-primary-100 rounded-lg hover:p-2 transition-all duration-150;
+}
+
+.nav-section {
+  @apply bg-transparent px-16 pt-3 md:px-36 py-5 flex justify-normal md:justify-between;
+}
+
+.title {
+  @apply text-center pt-7;
+}
+
+.title-heading {
+  @apply text-3xl md:text-6xl font-bold text-primary-100;
+}
+
+.headings {
+  @apply text-2xl md:text-4xl text-center font-semibold;
+}
+
+.facilitator-box {
+  @apply items-center bg-gray-50 rounded-lg shadow sm:flex border-2;
+}
+
+.facilitator-img {
+  @apply w-full rounded-lg sm:rounded-none sm:rounded-l-lg;
+}
+
+.facilitator-social-box {
+  @apply flex space-x-4 sm:mt-0;
+}
+
+.social {
+  @apply cursor-pointer my-2 flex justify-center items-center;
+}
+
+.social-i {
+  @apply text-3xl w-8 text-primary-100 hover:text-primary-200 transform transition-all hover:translate-y-[-10px] duration-200 delay-100;
+}

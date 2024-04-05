@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
+    <title>Photizo | HGBC Influencers</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles.css" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!---- Jquery -->
+
+    <!-- Packages -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!---- Animation on scroll -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" />
+    <!---- Slick Carousel -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <!---- Boxicon -->
+    <!-- JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <!---- Slick Carousel -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!---- Animation on scroll -->
+</head>
+
+<body>
+    <style>
+        .my-container{
+           width: 90%;
+           max-width: 1000px;
+           display: flex;
+           justify-content: center;
+           margin-inline: auto;
+        }
+        .alert-success{
+           color: #155723; /* Text color */
+           background-color: #dff0d8; /* Background color */
+           border-color: #c3e6cb; /* Border color */
+           border-radius: 0.25rem; /* Border radius */
+           padding: 0.75rem 1.25rem; /* Padding */
+           margin-bottom: 1rem; /* Margin bottom */
+           margin-top: 1rem; /* Margin bottom */
+           border: 1px solid transparent; /* Initial border */
+           text-align: center;
+           width: 100%;
+        }
+        .alert-error{
+           color: #f8d7da; /* Text color */
+           background-color: #dc3545; /* Background color */
+           border-color: #c8233c; /* Border color */
+           border-radius: 0.25rem; /* Border radius */
+           padding: 0.75rem 1.25rem; /* Padding */
+           margin-bottom: 1rem; /* Margin bottom */
+           margin-top: 1rem; /* Margin bottom */
+           border: 1px solid transparent; /* Initial border */
+           text-align: center;
+           width: 100%;
+        }
+      </style>
+<!-- flash error and success -->
+    <div class="my-container top-layer">
+        <% if (error && error.length > 0) { %>
+           <div id="error-alert" class="alert alert-error" role="alert">
+              <%= error %>
+           </div>
+           <script>
+              const errorAlert = document.getElementById('error-alert');
+     
+              // Ensure errorAlert exists before setting timeout
+              if (errorAlert) {
+                 setTimeout(() => {
+                    errorAlert.style.display = 'none';
+                 }, 5000); // 30 seconds in milliseconds
+              }
+           </script>
+        <% } else if (success && success.length > 0) { %>
+           <div id="success-alert" class="alert alert-success" role="alert">
+              <%= success %>
+           </div>
+           <script>
+              const successAlert = document.getElementById('success-alert');
+     
+              // Ensure successAlert exists before setting timeout
+              if (successAlert) {
+                 setTimeout(() => {
+                    successAlert.style.display = 'none';
+                 }, 5000); // 30 seconds in milliseconds
+              }
+           </script>
+        <% } %>
+     </div>
+    <!-- Nav and showcase -->
+    <section class="bg-my-showcase h-2/3 bg-gradient-to-b bg-cover bg-center transition duration-500">
+        <div class="backdrop-brightness-50">
+                <!-- Navbar -->
+    <nav class="nav-section">
+        <div class="container md:flex md:items-center md:justify-between">
+          <!-- logo & menu icon -->
+          <div class="flex items-center justify-between">
+            <a href="index.html">
+              <img src="/logo.png" alt="Data Minds" class="w-[200px] cursor-pointer" />
+            </a>
+            <div class="flex text-white w-fit rounded-full md:hidden cursor-pointer hover:bg-primary-100 justify-center items-center">
+                <i class="menu bx bx-menu text-center text-3xl p-2"  id="menuButton"></i>
+            </div>
+          </div>
+
+          <!-- Navigation links -->
+          <ul
+            class="p-5 z-10 absolute text-white bg-primary-100 md:bg-transparent md:bg-none w-full h-full left-0 opacity-0 right-[-400px] transition-all ease-in duration-200 md:p-0 md:flex md:items-center md:space-x-8 md:sticky md:w-auto md:opacity-100 border-r-2 md:border-0">
+            <li class="nav my-6 active-nav">
+              <a href="https://www.youtube.com/@hgbcinfluencers" target="_blank" class="text-lg">YouTube</a>
+            </li>
+            <li class="nav">
+              <a href="https://www.instagram.com/photizoconference/" target="_blank" class="text-lg">Instagram</a>
+            </li>
+            <li class="nav ">
+              <a href="https://web.facebook.com/photizoconference" target="_blank" class="text-lg">Facebook</a>
+            </li>
+            <li class="nav">
+              <a href="https://x.com/hgbcinfluencers?s=20" target="_blank" class="text-lg">Twitter</a>
+            </li>
+          </ul>
+      </nav>
+
+            <!-- Showcase -->
+            <div class="px-16 pb-20 md:px-36 mt-28 text-white" data-aos="fade-right" data-aos-duration="1000">
+                <div id="sliding-content">
+                    
+                    <h1 class="text-6xl md:text-8xl">UNLEASH</h1>
+                    <h1 class="text-2xl md:text-2xl mt-3 md:w-1/2 w-full">Dreams can only become realities when we are ready to push our potentials to the maximum. It is important that we identify and recognize our potentials, first. Then, we figure how to unleash them. 
+                        Photizo '24  is here to help us UNLEASH these potentials.</h1>
+                    <p class="text-xl md:w-1/2 w-full mt-4 italic">Building men of influence...</p>
+
+                        <div class="flex gap-5">
+                            <a href="#about">
+                                <button type="button"
+                                    class="px-4 py-3 mt-5 cursor-pointer font-bold bg-primary-100 rounded-md hover:bg-transparent hover:border-white hover:text-white hover:border-2 transition-all duration-150">Learn More
+                                    </button>
+                            </a>
+                            <a href="/photizo/register" target="_blank">
+                                <button type="button"
+                                    class="px-4 py-3 mt-5 cursor-pointer font-bold bg-transparent rounded-md hover:bg-transparent border border-white hover:border-primary-100  hover:text-primary-100 hover:border-2 transition-all duration-150">Register Now
+                                    </button>
+                            </a>
+                        </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+
+    <!-- About -->
+    <section id="about" class="px-16 md:px-36  mt-24 md:mt-5">
+        <div class="text-center md:pt-7 pt-2">
+            <h1 class="title-heading">
+                What is PHOTIZO?
+            </h1>
+        </div>
+
+        <div class="gap-16 items-center py-8 px-4 mx-auto  lg:grid lg:grid-cols-2 lg:py-16 lg:px-6" data-aos="fade-up" data-aos-duration="1000">
+            <div class="font-light text-black sm:text-lg">
+               
+                <img src="/logo.png" alt="Data Minds" class="w-1/2 cursor-pointer mb-5" />
+                <p>PHOTIZO is to build men of influence. The goal is to challenge and empower conferees to advance
+                    through all odds and penetrate their God-given montains of influence around the world. The meeting
+                    featured general sessions and syndicate groups based on the seven mountains of societal influence
+                    (Politics, Economy, Education, Science and Technology, Media and Sport, Fashion, Entertainment,
+                    Religion, and Family)</p>
+            </div>
+            <div class="md:grid grid-cols-2 gap-4 mt-10 md:mt-8" data-aos="fade-left" data-aos-duration="1000">
+                <img class="w-full rounded-lg" src="/photizo.jpg" alt="office content 1">
+                <div class="overflow-hidden w-full rounded-lg">
+                    <div class="flex transition-transform duration-500" id="slider">
+                        <img class="mt-4 w-full lg:mt-10 rounded-lg" src="/photizo-1.jpg" alt="office content 2">
+                        <img class="mt-4 w-full lg:mt-10 rounded-lg" src="/photizo-2.jpg" alt="office content 2">
+                        <img class="mt-4 w-full lg:mt-10 rounded-lg" src="/photizo-3.jpg" alt="office content 2">
+                        <img class="mt-4 w-full lg:mt-10 rounded-lg" src="/photizo-4.jpg" alt="office content 2">
+                        <img class="mt-4 w-full lg:mt-10 rounded-lg" src="/photizo-5.jpg" alt="office content 2">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+            <!-- About Picture slider -->
+        <script>
+            let currentIndex = 0;
+            const images = document.querySelectorAll('#slider img');
+            const totalImages = images.length;
+            const slideWidth = document.querySelector('#slider').clientWidth;
+
+            function showNextImage() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            const newPosition = -1 * currentIndex * slideWidth;
+            document.querySelector('#slider').style.transform = `translateX(${newPosition}px)`;
+            }
+
+            setInterval(showNextImage, 3000); // Change image every 3 seconds
+
+        </script>
+
+    </section>
+
+    <!--Facilitators -->
+
+    <section class="px-16 md:px-36 mt-24 md:mt-5" data-aos="zoom-in-up" data-aos-duration="1000">
+        <div class="text-center md:pt-7 pt-2">
+            <h1 class="title-heading">
+                Who is Coming?
+            </h1>
+
+        </div>
+
+
+        <div class="py-8 px-4 mx-auto  lg:py-16 lg:px-6 ">
+            <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
+
+
+                
+
+                    <!-- Person 2 -->
+
+                    <div class="facilitator-box">
+                        <div>
+                            <img class="facilitator-img" src="/facilitators/fac-5.png" alt="Sofia Avatar">
+                        </div>
+                        <div class="p-5">
+                            <h1 class="text-xl font-bold tracking-tight text-primary-100">Pastor Samson Ayangoke</h1>
+                            <span class="text-primary-300">Lead Pastor, HGBC Ogbomoso</span>
+                            <p class="mt-3 mb-4 font-light text-gray-700">Pastor | Life Coach | Counselor</p>
+    
+                            <ul class="facilitator-social-box">
+                                <li class="social"><a href="https://x.com/AlaoSinmi?s=20" target="_blank"><i
+                                            class="bx bxl-twitter social-i"></i></a></li>
+                                <li class="social"><a href="https://www.linkedin.com/in/sinmi-alao-a5849b1a0?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FHQcHRJDQumPvL4rhor6fg%3D%3D" target="_blank"><i
+                                            class="bx bxl-linkedin-square social-i"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                <!-- Person 1 -->
+                <div class="facilitator-box">
+                    <div>
+                        <img class="facilitator-img" src="/facilitators/fac-1.png" alt="Sofia Avatar">
+                    </div>
+                    <div class="p-5"> 
+                        <h1 class="text-xl font-bold tracking-tight text-primary-100">Rev'd Taiwo Opajobi</h1>
+                        <span class="text-primary-300">Senior Pastor, UBC Ogbomoso</span>
+                        <p class="mt-3 mb-4 font-light text-gray-700">CEO of Mastermind Integrated Leadership Consult</p>
+
+                        <ul class="facilitator-social-box">
+                            <li class="social"><a href="https://x.com/hgbcinfluencers" target="_blank"><i
+                                        class="bx bxl-twitter social-i"></i></a></li>
+                            <li class="social"><a href="https://facebook.com/hgbcinfluencers" target="_blank"><i
+                                        class="bx bxl-facebook social-i"></i></a></li>
+                            <li class="social"><a href="https://youtube.com/@hgbcinfluencers" target="_blank"><i
+                                        class="bx bxl-instagram social-i"></i></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+                <!-- Person 2 -->
+
+                <div class="facilitator-box">
+                    <div>
+                        <img class="facilitator-img" src="/facilitators/fac-2.png" alt="Sofia Avatar">
+                    </div>
+                    <div class="p-5">
+                        <h1 class="text-xl font-bold tracking-tight text-primary-100">Pastor Sinmi Alao</h1>
+                        <span class="text-primary-300">Excellent  lifestyle  influencer</span>
+                        <p class="mt-3 mb-4 font-light text-gray-700">Missions Director at STOGMISSION</p>
+
+                        <ul class="facilitator-social-box">
+                            <li class="social"><a href="https://x.com/AlaoSinmi?s=20" target="_blank"><i
+                                        class="bx bxl-twitter social-i"></i></a></li>
+                            <li class="social"><a href="https://www.linkedin.com/in/sinmi-alao-a5849b1a0?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FHQcHRJDQumPvL4rhor6fg%3D%3D" target="_blank"><i
+                                        class="bx bxl-linkedin-square social-i"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Person 3 -->
+                <div class="facilitator-box">
+                    <div>
+                        <img class="facilitator-img" src="/facilitators/fac-3.png" alt="Sofia Avatar">
+                    </div>
+                    <div class="p-5">
+                        <h1 class="text-xl font-bold tracking-tight text-primary-100">Adesegun David (JD)</h1>
+                        <span class="text-primary-300">Co-founder and CEO of Ennovate Lab</span>
+                        <p class="mt-3 mb-4 font-light text-gray-700">Thought Alchemist and a Community Transformation Strategist.</p>
+
+                        <ul class="facilitator-social-box">
+                            <li class="social"><a href="https://x.com/JesudamilareAD?s=20" target="_blank"><i
+                                        class="bx bxl-twitter social-i"></i></a></li>
+                            <li class="social"><a href="https://web.facebook.com/jesudamilare.adesegundavid" target="_blank"><i
+                                        class="bx bxl-facebook social-i"></i></a></li>
+                            <li class="social"><a href="https://www.instagram.com/jesu_damilare/" target="_blank"><i
+                                        class="bx bxl-instagram social-i"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Person 4 -->
+                <div class="facilitator-box">
+                   <div>
+                    <img class="facilitator-img" src="/facilitators/fac-4.png" alt="Sofia Avatar">
+                   </div>
+                        
+                   
+                    <div class="p-5">
+                        <h1 class="text-xl font-bold tracking-tight text-primary-100">Muyiwa Fasakin</h1>
+                        <span class="text-primary-300">Certified life coach,Trainer, Consultant, Author</span>
+                        <p class="mt-3 mb-4 font-light text-gray-700">Head coach of School of Creativity Nigeria</p>
+
+                        <ul class="facilitator-social-box">
+                            <li class="social"><a href="" target="_blank"><i
+                                        class="bx bxl-twitter social-i"></i></a></li>
+                            <li class="social"><a href="https://facebook.com/hgbcinfluencers" target="_blank"><i
+                                        class="bx bxl-facebook social-i"></i></a></li>
+                            <li class="social"><a href="https://youtube.com/@hgbcinfluencers" target="_blank"><i
+                                        class="bx bxl-instagram social-i"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Team -->
+    <section class="px-16 md:px-36 mt-24  mb-20" data-aos="zoom-out-up" data-aos-duration="1000">
+        <div class="title">
+            <h1 class="title-heading">PHOTIZO 2024 Team</h1>
+
+        </div>
+
+        <div class="team md:flex md:justify-between  py-10">
+
+            <!-- Person 1 -->
+            <div class="max-w-sm bg-white border-2 border-gray-200 rounded-lg shadow">
+                
+                    <img class="rounded-t-lg" src="/team/team-1.png" alt="" />
+
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary-100">Pastor Samson Ayangoke</h5>
+                    <p class="mb-1 font-semibold text-primary-200">Lead Pastor, HGBC Ogbomoso</p>
+                    <p class="mb-3 font-semibold text-gray-600">Photizo Committee Chairman</p>
+                    <ul class="facilitator-social-box">
+                        <li class="social"><a href="https://x.com/samsonayangoke_?s=20" target="_blank"><i
+                                    class="bx bxl-twitter social-i"></i></a></li>
+                        <li class="social"><a href="https://web.facebook.com/samsonayangoke" target="_blank"><i
+                                    class="bx bxl-facebook social-i"></i></a></li>
+                        <li class="social"><a href="https://www.instagram.com/samsonayangoke/" target="_blank"><i
+                                    class="bx bxl-instagram social-i"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Person 1 -->
+            <div class="max-w-sm bg-white border-2 border-gray-200 rounded-lg shadow">
+                <a href="#">
+                    <img class="rounded-t-lg" src="/team/team-2.png" alt="" />
+                </a>
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary-100">Adepoju Glory Omolewa</h5>
+                    <p class="mb-1 font-semibold text-primary-200">CEO, Lewa's Growth Oil</p>
+                    <p class="mb-3 font-semibold text-gray-600">Photizo Secretary</p>
+                    <ul class="facilitator-social-box">
+                        <li class="social"><a href="https://web.facebook.com/glory.omolewa.5" target="_blank"><i
+                                    class="bx bxl-facebook social-i"></i></a></li>
+                        <li class="social"><a href="https://www.instagram.com/omo_lewa05/" target="_blank"><i
+                                    class="bx bxl-instagram social-i"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Person 1 -->
+            <div class="max-w-sm bg-white border-2 border-gray-200 rounded-lg shadow">
+                <a href="#">
+                    <img class="rounded-t-lg" src="/team/team-3.png" alt="" />
+                </a>
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary-100">Sunday Michael Adeyemo</h5>
+                    <p class="mb-1 font-semibold text-primary-200">CEO, Digital Space</p>
+                    <p class="mb-3 font-semibold text-gray-600">Photizo Protocol and Planning</p>
+                    <ul class="facilitator-social-box">
+                        <li class="social"><a href="https://x.com/Michael67627365?s=20" target="_blank"><i
+                                    class="bx bxl-twitter social-i"></i></a></li>
+                        <li class="social"><a href="https://web.facebook.com/adeyemosunday.michael" target="_blank"><i
+                                    class="bx bxl-facebook social-i"></i></a></li>
+                        <li class="social"><a href="https://www.instagram.com/mykehexploral/" target="_blank"><i
+                                    class="bx bxl-instagram social-i"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Person 1 -->
+            <div class="max-w-sm bg-white border-2 border-gray-200 rounded-lg shadow">
+                <a href="#">
+                    <img class="rounded-t-lg" src="/team/team-4.png" alt="" />
+                </a>
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary-100">Odede Esther Aderonke</h5>
+                    <p class="mb-1 font-semibold text-primary-200">Decorator & Event planner</p>
+                    <p class="mb-3 font-semibold text-gay-600">Photizo Welfare Director</p>
+                    <ul class="facilitator-social-box">
+                        <li class="social"><a href="https://www.facebook.com/esther.o.odede" target="_blank"><i
+                                    class="bx bxl-facebook social-i"></i></a></li>
+                        <li class="social"><a href="https://www.instagram.com/odede.esther/" target="_blank"><i
+                                    class="bx bxl-instagram social-i"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Person 1 -->
+            <div class="max-w-sm bg-white border-2 border-gray-200 rounded-lg shadow">
+                <a href="#">
+                    <img class="rounded-t-lg" src="/team/team-5.png" alt="" />
+                </a>
+                <div class="p-5">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary-100">Mr Oluwatobi Ojua</h5>
+                    <p class="mb-3 font-normal text-gray-600 dark:text-gray-400"></p>
+                    <ul class="facilitator-social-box">
+                        <li class="social"><a href="https://x.com/hgbcinfluencers" target="_blank"><i
+                                    class="bx bxl-twitter social-i"></i></a></li>
+                        <li class="social"><a href="https://facebook.com/hgbcinfluencers" target="_blank"><i
+                                    class="bx bxl-facebook social-i"></i></a></li>
+                        <li class="social"><a href="https://youtube.com/@hgbcinfluencers" target="_blank"><i
+                                    class="bx bxl-instagram social-i"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+    <!-- Video Preview -->
+
+    <!-- <section class="px-16 md:px-36 mb-20" data-aos="zoom-in-down" data-aos-duration="1000">
+        <div class="title">
+            <h1 class="title-heading">PHOTIZO 2024 Team</h1>
+            <p class="mt-4 text-title font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
+                quia beatae, vero asperiores aliquid sapiente!</p>
+        </div>
+
+        <div class="md:flex md:justify-between md:items-center gap-10 py-10">
+            <div class="md:w-1/2">
+                <video class="w-full" autoplay muted controls>
+                    <source src="https://www.youtube.com/live/JPmtpc65B3E?si=pXyvvZvdMfS6g8zi" type="video/mp4">
+                </video>
+            </div>
+        
+            <div class="md:w-1/2 mt-10 md:mt-0">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quaerat iure suscipit tenetur id nisi quo, consequuntur eaque quis corporis eveniet illum et error perspiciatis officia officiis est enim quam?</p>
+            </div>
+        </div>
+        
+    </section> -->
+
+    <!-- Testimonials -->
+    <section class="px-16 md:px-36 mb-20">
+        <div class="title">
+            <h1 class="title-heading">Testimonials</h1>
+   
+        </div>
+
+        <div class="testimonial md:flex md:justify-between py-10">
+
+            <!-- Testimony 1 -->
+            <figure class="max-w-screen-md mx-auto text-center">
+                <i class='bx bxs-quote-right text-5xl text-primary-200'></i>
+                
+                <blockquote>
+                    <p class="text-2xl italic font-medium text-gray-900">"Flowbite is just awesome. It
+                        contains tons of predesigned components and pages starting from login screen to complex
+                        dashboard. Perfect choice for your next SaaS application."</p>
+                </blockquote>
+                <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                    <img class="w-6 h-6 rounded-full"
+                        src="/facilitators/fac-1.png"
+                        alt="profile picture">
+                    <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                        <cite class="pe-3 font-medium text-gray-900 ">Michael Gough</cite>
+                        <cite class="ps-3 text-sm text-gray-500 ">CEO at Google</cite>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <!-- Testimony 1 -->
+            <figure class="max-w-screen-md mx-auto text-center">
+                <i class='bx bxs-quote-right text-5xl text-primary-200'></i>
+                
+                <blockquote>
+                    <p class="text-2xl italic font-medium text-gray-900">"Flowbite is just awesome. It
+                        contains tons of predesigned components and pages starting from login screen to complex
+                        dashboard. Perfect choice for your next SaaS application."</p>
+                </blockquote>
+                <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                    <img class="w-6 h-6 rounded-full"
+                        src="/facilitators/fac-1.png"
+                        alt="profile picture">
+                    <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                        <cite class="pe-3 font-medium text-gray-900 ">Michael Gough</cite>
+                        <cite class="ps-3 text-sm text-gray-500 ">CEO at Google</cite>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <!-- Testimony 1 -->
+            <figure class="max-w-screen-md mx-auto text-center">
+                <i class='bx bxs-quote-right text-5xl text-primary-200'></i>
+                
+                <blockquote>
+                    <p class="text-2xl italic font-medium text-gray-900">"Flowbite is just awesome. It
+                        contains tons of predesigned components and pages starting from login screen to complex
+                        dashboard. Perfect choice for your next SaaS application."</p>
+                </blockquote>
+                <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                    <img class="w-6 h-6 rounded-full"
+                        src="/facilitators/fac-1.png"
+                        alt="profile picture">
+                    <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                        <cite class="pe-3 font-medium text-gray-900 ">Michael Gough</cite>
+                        <cite class="ps-3 text-sm text-gray-500 ">CEO at Google</cite>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <!-- Testimony 1 -->
+            <figure class="max-w-screen-md mx-auto text-center">
+                <i class='bx bxs-quote-right text-5xl text-primary-200'></i>
+                
+                <blockquote>
+                    <p class="text-2xl italic font-medium text-gray-900">"Flowbite is just awesome. It
+                        contains tons of predesigned components and pages starting from login screen to complex
+                        dashboard. Perfect choice for your next SaaS application."</p>
+                </blockquote>
+                <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                    <img class="w-6 h-6 rounded-full"
+                        src="/facilitators/fac-1.png"
+                        alt="profile picture">
+                    <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                        <cite class="pe-3 font-medium text-gray-900 ">Michael Gough</cite>
+                        <cite class="ps-3 text-sm text-gray-500 ">CEO at Google</cite>
+                    </div>
+                </figcaption>
+            </figure>
+
+            <!-- Testimony 1 -->
+            <figure class="max-w-screen-md mx-auto text-center">
+                <i class='bx bxs-quote-right text-5xl text-primary-200'></i>
+                
+                <blockquote>
+                    <p class="text-2xl italic font-medium text-gray-900">"Flowbite is just awesome. It
+                        contains tons of predesigned components and pages starting from login screen to complex
+                        dashboard. Perfect choice for your next SaaS application."</p>
+                </blockquote>
+                <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                    <img class="w-6 h-6 rounded-full"
+                        src="/facilitators/fac-1.png"
+                        alt="profile picture">
+                    <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                        <cite class="pe-3 font-medium text-gray-900 ">Michael Gough</cite>
+                        <cite class="ps-3 text-sm text-gray-500 ">CEO at Google</cite>
+                    </div>
+                </figcaption>
+            </figure>
+
+
+        </div>
+
+
+
+    </section>
+
+
+     <!-- Footer -->
+    <footer class="px-16 md:px-36 mt-36" data-aos="zoom-in-up" data-aos-duration="1000">
+        <div class="md:items-center md:justify-between">
+            <ul class="flex md:mb-3 mt-5 gap-x-5 items-center justify-center">
+              <li class="social"><a href="https://x.com/hgbcinfluencers" target="_blank"><img src="/twitter.png" alt="Twitter" class="w-6 transform transition-all hover:translate-y-[-10px] duration-200 delay-100"></a></li>
+              <li class="social"><a href="https://facebook.com/hgbcinfluencers" target="_blank"><i class="bx bxl-facebook social-i"></i></a></li>
+              <li class="social"><a href="https://youtube.com/@hgbcinfluencers" target="_blank"><i class="bx bxl-youtube social-i" ></i></a></li>
+              <li class="social"><a href="https://instagram.com/hgbcinfluencers" target="_blank"><i class="bx bxl-instagram social-i" ></i></a></li>
+            </ul>
+      
+            <p class="py-3 md:mb-10 text-center">&copy; All right reserved 2024 <b>Higher Ground Baptist Church</b></p>
+            </div>
+    </footer>
+
+
+  <!-- Swipe up icon -->
+    <div class="relative z-40 ">
+        <div id="moveUp"
+            class="fixed right-10 bottom-10 p-3 rounded-full w-12 h-12 bg-primary-200 animate-bounce cursor-pointer shadow-md shadow-primary-100">
+            <i class='bx bxs-up-arrow text-white text-2xl items-center justify-center'></i>
+        </div>
+    </div>
+    <script src="/main.js"></script>
+
+</body>
+
+</html>
