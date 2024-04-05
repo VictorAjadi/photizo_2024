@@ -2,10 +2,7 @@ const nodemailer=require("nodemailer")
 const Mailgen = require('mailgen');
 
 const config={
-    host: process.env.HOST,
-     //service: process.env.SERVICE,
-     port: 587,
-    //secure: true,
+     service: process.env.SERVICE,
     auth:{
         user: process.env.COMPANY_EMAIL,
         pass: process.env.COMPANY_PASS
