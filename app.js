@@ -86,6 +86,9 @@ app.use(express.static(__dirname + '/img'));
 app.use(express.static(__dirname + '/customJS'));
 
 //********************movie router middleware**********************************
+app.get("/",(req,res)=>{
+  res.redirect("/photizo");
+})
 app.use("/photizo", photizoRouter); 
 
 //***************************default home route *******************************
