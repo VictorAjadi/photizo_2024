@@ -24,8 +24,8 @@ router.route("/register").post(upload.single('file'),async(req,res,next)=>{
      req.flash('error','Please upload your receipt image.');
      return res.status(400).redirect('/photizo/register');
     } 
-    if (req.file.size > 512000) {//for acceptance of file up to 15kb only unless flag error
-        req.flash('error', 'Image size exceeds 15kb limit.');
+    if (req.file.size > 768000) {//for acceptance of file up to 15kb only unless flag error
+        req.flash('error', 'Image size exceeds 750kb limit.');
         return res.status(400).redirect('/photizo/register');
     }
     try{

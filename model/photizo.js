@@ -30,6 +30,7 @@ const photizoSchema = new mongoose.Schema({
   },
   mobileNumber: {
     type: Number,
+    required: [true, "Please enter your mobile number."],
     maxLength: 15,
     minLength: 11
   },
@@ -51,7 +52,7 @@ const photizoSchema = new mongoose.Schema({
   },
   learnings:{
     type: String,
-    required: [true, "Please enter How you learnt about the program."]
+    required: [true, "Please enter how you heard about the program."]
   },
   otherLearnings:{
     type: String
