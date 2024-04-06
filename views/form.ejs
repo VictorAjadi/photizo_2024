@@ -4,49 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://code.jquery.com/ https://unpkg.com/aos@2.3.1/dist/aos.js https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/ 'unsafe-inline'">
     <link rel="shortcut icon" href="/logo.png" type="image/x-icon" />
     <title>Photizo | HGBC Influencers</title>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/styles.css" type="text/css">
+    <link rel="stylesheet" href="/styles.css" />
 
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <!---- Boxicon -->
 </head>
 
 <body class="">
-   <style>
-     .my-container{
-        width: 90%;
-        max-width: 1000px;
-        display: flex;
-        justify-content: center;
-        margin-inline: auto;
-     }
-     .alert-success{
-        color: #155723; /* Text color */
-        background-color: #dff0d8; /* Background color */
-        border-color: #c3e6cb; /* Border color */
-        border-radius: 0.25rem; /* Border radius */
-        padding: 0.75rem 1.25rem; /* Padding */
-        margin-bottom: 1rem; /* Margin bottom */
-        margin-top: 1rem; /* Margin bottom */
-        border: 1px solid transparent; /* Initial border */
-        text-align: center;
-     }
-     .alert-error{
-        color: #f8d7da; /* Text color */
-        background-color: #dc3545; /* Background color */
-        border-color: #c8233c; /* Border color */
-        border-radius: 0.25rem; /* Border radius */
-        padding: 0.75rem 1.25rem; /* Padding */
-        margin-bottom: 1rem; /* Margin bottom */
-        margin-top: 1rem; /* Margin bottom */
-        border: 1px solid transparent; /* Initial border */
-        text-align: center;
-     }
-   </style>
+    <style>
+        .my-container{
+           width: 90%;
+           max-width: 1000px;
+           display: flex;
+           justify-content: center;
+           margin-inline: auto;
+        }
+        .alert-success{
+           color: #155723; /* Text color */
+           background-color: #dff0d8; /* Background color */
+           border-color: #c3e6cb; /* Border color */
+           border-radius: 0.25rem; /* Border radius */
+           padding: 0.75rem 1.25rem; /* Padding */
+           margin-bottom: 1rem; /* Margin bottom */
+           margin-top: 1rem; /* Margin bottom */
+           border: 1px solid transparent; /* Initial border */
+           text-align: center;
+        }
+        .alert-error{
+           color: #f8d7da; /* Text color */
+           background-color: #dc3545; /* Background color */
+           border-color: #c8233c; /* Border color */
+           border-radius: 0.25rem; /* Border radius */
+           padding: 0.75rem 1.25rem; /* Padding */
+           margin-bottom: 1rem; /* Margin bottom */
+           margin-top: 1rem; /* Margin bottom */
+           border: 1px solid transparent; /* Initial border */
+           text-align: center;
+        }
+      </style>
     <!-- Form -->
     <section id="form" class="relative px-4 md:px-16 lg:px-32">
 
@@ -71,46 +70,54 @@
 
 
         <div class="max-w-lg mx-auto relative z-10 h-[calc(100% - 40px)] overflow-y-auto">
-            <!-- flash error and success -->
-            <div class="my-container top-layer">
-                <% if (error && error.length > 0) { %>
-                   <div id="error-alert" class="alert alert-error" role="alert">
-                      <%= error %>
-                   </div>
-                   <script>
-                      const errorAlert = document.getElementById('error-alert');
-             
-                      // Ensure errorAlert exists before setting timeout
-                      if (errorAlert) {
-                         setTimeout(() => {
-                            errorAlert.style.display = 'none';
-                         }, 5000); // 30 seconds in milliseconds
-                      }
-                   </script>
-                <% } else if (success && success.length > 0) { %>
-                   <div id="success-alert" class="alert alert-success" role="alert">
-                      <%= success %>
-                   </div>
-                   <script>
-                      const successAlert = document.getElementById('success-alert');
-             
-                      // Ensure successAlert exists before setting timeout
-                      if (successAlert) {
-                         setTimeout(() => {
-                            successAlert.style.display = 'none';
-                         }, 5000); // 30 seconds in milliseconds
-                      }
-                   </script>
-                <% } %>
-             </div>
-             
-            <form class="border-2 border-gray-900/10 my-10 p-6 rounded-md" method="post" action="/photizo/register" enctype="multipart/form-data">
+                        <!-- flash error and success -->
+                        <div class="my-container top-layer">
+                            <% if (error && error.length > 0) { %>
+                               <div id="error-alert" class="alert alert-error" role="alert">
+                                  <%= error %>
+                               </div>
+                               <script>
+                                  const errorAlert = document.getElementById('error-alert');
+                         
+                                  // Ensure errorAlert exists before setting timeout
+                                  if (errorAlert) {
+                                     setTimeout(() => {
+                                        errorAlert.style.display = 'none';
+                                     }, 5000); // 30 seconds in milliseconds
+                                  }
+                               </script>
+                            <% } else if (success && success.length > 0) { %>
+                               <div id="success-alert" class="alert alert-success" role="alert">
+                                  <%= success %>
+                               </div>
+                               <script>
+                                  const successAlert = document.getElementById('success-alert');
+                         
+                                  // Ensure successAlert exists before setting timeout
+                                  if (successAlert) {
+                                     setTimeout(() => {
+                                        successAlert.style.display = 'none';
+                                     }, 5000); // 30 seconds in milliseconds
+                                  }
+                               </script>
+                            <% } %>
+                         </div>
+                         <form class="border-2 border-gray-900/10 my-10 p-6 rounded-md" method="post" action="/photizo/register" enctype="multipart/form-data">
                 <div class="space-y-12">
 
                     <div class="border-b border-gray-900/10 pb-12">
                         <h2 class="font-semibold leading-7 text-primary-100 text-2xl text-center">PHOTIZO 2024</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-600"><span class="font-bold">NOTE: </span>All your
                             personal information are safe with us. We collect this information for follow up.</p>
+
+                      <!-- Payment Procedure -->
+                        <div class=" p-2">
+                            <span class="text-xl text-primary-100">Registration Procedure</span>
+                            <p class="mt-1 text-gray-600">Make your payment to this bank account to proceed registration</p>
+                            <p class="mt-1 font-bold">Bank: Polaris bank</p>
+                            <p class="mt-1 font-bold">Higher Ground Baptist Church</p>
+                            <p class="mt-1 font-bold">Account No:1140056637</p>
+                        </div>
 
                         <!-- Surname -->
                         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
