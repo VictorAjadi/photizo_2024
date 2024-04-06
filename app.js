@@ -49,6 +49,7 @@ const cspConfig = {
 };
 
 app.use(helmet.contentSecurityPolicy(cspConfig));
+app.set('trust proxy', 1); // Adjust the value based on the number of proxies
 
 
 app.disable('x-powered-by');
@@ -56,7 +57,8 @@ app.disable('x-powered-by');
 let limiter=expressRateLimiter({
     max: 500,
     windowMs: 60 * 60 * 1000,
-    message: 'we have received too many request from this IP.please try again later in about one hour time.'
+    message: 'we have received too many request from this IP.please try again later in about one hour time.',
+    ignoreHeaders: ['X-Forwarded-For']
 })
 
 app.use('/photizo', limiter);
