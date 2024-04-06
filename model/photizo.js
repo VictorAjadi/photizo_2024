@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 
 const photizoSchema = new mongoose.Schema({
-  surname: {
+  middleName: {
     type: String,
-    required: [true, "Please enter your surname name."],
+    required: [true, "Please enter your middle-name."],
     maxLength: 30,
     minLength: 5,
   },
