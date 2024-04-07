@@ -50,6 +50,12 @@ const cspConfig = {
 
 app.use(helmet.contentSecurityPolicy(cspConfig));
 app.set('trust proxy', 1); // Adjust the value based on the number of proxies
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', 0);
+  next();
+});
 
 
 app.disable('x-powered-by');
