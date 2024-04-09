@@ -3,16 +3,14 @@ const express = require("express"),
       photizoRouter=require("./routes/photizoRoute"),
       expressRateLimiter=require("express-rate-limit"),
       helmet=require("helmet"),
-      xss=require("xss-clean"),
       sanitize=require("express-mongo-sanitize"),
       cors = require('cors'),
       path = require('path'),
       cookieParser = require('cookie-parser'),
       flash       = require('connect-flash'),
-      bodyParser  = require("body-parser")
-
+      bodyParser  = require("body-parser"),
+      xssFilters = require('xss-filters')
 const app = express();
-
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(require('express-session')({
@@ -50,13 +48,13 @@ const cspConfig = {
 
 app.use(helmet.contentSecurityPolicy(cspConfig));
 app.set('trust proxy', 1); // Adjust the value based on the number of proxies
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
   res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', 0);
   next();
 });
-
+ */
 
 app.disable('x-powered-by');
 
@@ -72,8 +70,30 @@ app.use('/photizo', limiter);
 app.use(express.json());
 
 app.use(sanitize());
+// Middleware function to sanitize request parameters, query strings, and request body
+const sanitizeInput = (req, res, next) => {
+  // Sanitize request parameters
+  req.params = sanitizeObject(req.params);
+  // Sanitize query strings
+  req.query = sanitizeObject(req.query);
+  // Sanitize request body
+  req.body = sanitizeObject(req.body);
+  next();
+};
 
-app.use(xss());
+// Helper function to sanitize object properties
+const sanitizeObject = (obj) => {
+  const sanitizedObj = {};
+  for (const key in obj) {
+    if (Object.hasOwnProperty.call(obj, key)) {
+      sanitizedObj[key] = xssFilters.inHTMLData(obj[key]);
+    }
+  }
+  return sanitizedObj;
+};
+// Apply the middleware to all routes
+app.use(sanitizeInput);
+//app.use(helmet.xss()); // Enable XSS protection specifically
 
 app.use(morgan("dev"));
 

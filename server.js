@@ -12,7 +12,7 @@ process.on('uncaughtException', (err) => {
 
 const app = require("./app");
 
-mongoose.connect(process.env.GLOBAL_CONN, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.LOCAL_CONN, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(conn => {
         console.log("DB connected successfully");
     })

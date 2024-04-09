@@ -984,10 +984,6 @@ select{
   height: 3rem;
 }
 
-.h-2\/3{
-  height: 66.666667%;
-}
-
 .h-4{
   height: 1rem;
 }
@@ -1020,8 +1016,8 @@ select{
   width: 1.5rem;
 }
 
-.w-\[200px\]{
-  width: 200px;
+.w-\[150px\]{
+  width: 150px;
 }
 
 .w-\[300px\]{
@@ -1400,10 +1396,6 @@ select{
   padding-top: 0.5rem;
 }
 
-.text-left{
-  text-align: left;
-}
-
 .text-center{
   text-align: center;
 }
@@ -1458,10 +1450,6 @@ select{
 
 .font-medium{
   font-weight: 500;
-}
-
-.font-normal{
-  font-weight: 400;
 }
 
 .font-semibold{
@@ -1886,6 +1874,11 @@ select{
   background-color: transparent;
 }
 
+.hover\:bg-white:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 .hover\:text-primary-100:hover{
   --tw-text-opacity: 1;
   color: rgb(252 108 13 / var(--tw-text-opacity));
@@ -2145,10 +2138,5 @@ select{
   .dark\:divide-gray-700 > :not([hidden]) ~ :not([hidden]){
     --tw-divide-opacity: 1;
     border-color: rgb(55 65 81 / var(--tw-divide-opacity));
-  }
-
-  .dark\:text-gray-400{
-    --tw-text-opacity: 1;
-    color: rgb(156 163 175 / var(--tw-text-opacity));
   }
 }

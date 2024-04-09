@@ -100,6 +100,20 @@
                             }, 5000); // 30 seconds in milliseconds
                         }
                     </script>
+                <% } else{ %>
+                    <div id="success-alert-alert" class="alert alert-success" role="alert">
+                        Update | Enter Your Details For Editing / Registering
+                    </div>
+                    <script>
+                        const success_alert_alert = document.getElementById('success-alert-alert');
+                
+                        // Ensure successAlert exists before setting timeout
+                        if (success_alert_alert) {
+                            setTimeout(() => {
+                                success_alert_alert.style.display = 'none';
+                            }, 10000); // 30 seconds in milliseconds
+                        }
+                    </script>
                 <% } %>
                 </div>
             <form class="border-2 border-gray-900/10 my-10 p-6 rounded-md" method="post" action="/photizo/register" enctype="multipart/form-data">
