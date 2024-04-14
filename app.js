@@ -68,6 +68,7 @@ let limiter=expressRateLimiter({
 app.use('/photizo', limiter);
 
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 app.use(sanitize());
 // Middleware function to sanitize request parameters, query strings, and request body

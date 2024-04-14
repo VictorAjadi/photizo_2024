@@ -99,10 +99,11 @@ const photizoSchema = new mongoose.Schema({
 photizoSchema.pre("save",async function(next){
   if(this.serialNo){
     next();
-  }
+  }else{
   const count = await Photizo.countDocuments({}); // Empty query to count all documents
   this.serialNo=(count + 1);
   next();
+  }
 })
 
 photizoSchema.pre(/^find/, function(next) {

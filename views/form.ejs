@@ -329,6 +329,7 @@
                                     the registration payment</label>
                                 <div class="mt-2 flex justify-center rounded-lg border px-6 py-10">
                                     <div class="text-center">
+                                        <img src="" id="previewImage" width="250" height="300" alt="">
                                         <i class='bx bxs-image-add text-6xl text-primary-200'></i>
                                       
                                         <div class="mt-4 flex text-sm leading-6 text-gray-600">
@@ -356,7 +357,7 @@
                             <div class="mt-6 space-y-6">
                                 <div class="relative flex gap-x-3">
                                     <div class="flex h-6 items-center">
-                                        <input id="comments" name="comments" type="checkbox"
+                                        <input id="comments" name="comments" type="checkbox" 
                                             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-primary-200">
                                     </div>
                                     <div class="text-sm leading-6">
@@ -381,7 +382,24 @@
 
 
     </section>
+<script>
+    document.getElementById("previewImage").style.display="none"
+    document.getElementById("file-upload").addEventListener("change", function(e) {
+        const reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);  // Read the first selected file
+        
+        reader.onload = function() {
+            const base64String = reader.result;
+            document.getElementById("previewImage").src = base64String;  // Set image src
+            document.getElementById("previewImage").style.display="block"
+        };
 
+        reader.onerror = function(error) {
+            console.log(error);
+        };
+});
+
+</script>
 </body>
 
 </html>
