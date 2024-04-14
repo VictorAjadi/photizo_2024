@@ -4,21 +4,15 @@ const validator = require("validator");
 const photizoSchema = new mongoose.Schema({
   middleName: {
     type: String,
-    required: [true, "Please enter your middle-name."],
-    maxLength: 30,
-    minLength: 5,
+    required: [true, "Please enter your middle-name."]
   },
     lastName: {
     type: String,
-    required: [true, "Please enter your last name."],
-    maxLength: 30,
-    minLength: 5,
+    required: [true, "Please enter your last name."]
   },
   firstName: {
     type: String,
-    required: [true, "Please enter your first name."],
-    maxLength: 30,
-    minLength: 5,
+    required: [true, "Please enter your first name."]
   },
   gender:{
     type: String,
